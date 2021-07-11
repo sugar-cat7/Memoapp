@@ -13,7 +13,7 @@ const MemoDetailScreen = () => (
     <ScrollView style={styles.memoView}>
       <Text style={styles.memoText}>ここにテキストが入る〜</Text>
     </ScrollView>
-    <CircleButoon style={{ top: 160, bottom: 'auto' }}>+</CircleButoon>
+    <CircleButoon style={{ top: 160, bottom: 'auto' }} name="edit-2" />
   </View>
 );
 

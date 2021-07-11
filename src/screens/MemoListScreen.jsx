@@ -8,7 +8,7 @@ const MemoListScreen = () => (
   <View style={styles.container}>
     <AppBar />
     <MemoList />
-    <CircleButoon>+</CircleButoon>
+    <CircleButoon name="plus" />
   </View>
 );
 
