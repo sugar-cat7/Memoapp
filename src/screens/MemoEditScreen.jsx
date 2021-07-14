@@ -5,6 +5,7 @@ import {
   TextInput,
   View,
   KeyboardAvoidingView,
+  Alert,
 } from 'react-native';
 import AppBar from '../components/AppBar';
 import CircleButoon from '../components/CircleButoon';
@@ -15,7 +16,12 @@ const MemoEditScreen = () => (
     <View style={styles.inputContainer}>
       <TextInput value="買い物リスト" multiline style={styles.input} />
     </View>
-    <CircleButoon name="check" />
+    <CircleButoon
+      name="check"
+      onPress={() => {
+        Alert.alert('test');
+      }}
+    />
   </KeyboardAvoidingView>
 );
 
