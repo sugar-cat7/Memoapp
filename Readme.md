@@ -23,3 +23,7 @@
 - ios の場合はクライアントと共有する場合、同じアカウントでログインする必要がある
 
 - app.json に privacy: unlisted を追加すると公開されない（他の人に）
+
+## core components
+
+https://reactnative.dev/docs/components-and-apis
