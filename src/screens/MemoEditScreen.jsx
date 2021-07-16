@@ -7,23 +7,24 @@ import {
   KeyboardAvoidingView,
   Alert,
 } from 'react-native';
-import AppBar from '../components/AppBar';
 import CircleButoon from '../components/CircleButoon';
 
-const MemoEditScreen = () => (
-  <KeyboardAvoidingView style={styles.container} behavior="height">
-    <AppBar />
-    <View style={styles.inputContainer}>
-      <TextInput value="買い物リスト" multiline style={styles.input} />
-    </View>
-    <CircleButoon
-      name="check"
-      onPress={() => {
-        Alert.alert('test');
-      }}
-    />
-  </KeyboardAvoidingView>
-);
+const MemoEditScreen = (props) => {
+  const { navigation } = props;
+  return (
+    <KeyboardAvoidingView style={styles.container} behavior="height">
+      <View style={styles.inputContainer}>
+        <TextInput value="買い物リスト" multiline style={styles.input} />
+      </View>
+      <CircleButoon
+        name="check"
+        onPress={() => {
+          navigation.goBack();
+        }}
+      />
+    </KeyboardAvoidingView>
+  );
+};
 
 export default MemoEditScreen;
 
