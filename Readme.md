@@ -120,3 +120,8 @@ useEffect(() => {
   };
 }, []);
 ```
+
+### firebase の Database に情報を保存する(Cloud fireStore)
+
+- [Cloud Firestore のデータモデル](https://firebase.google.com/docs/firestore/data-model?hl=ja)
+  collection > document > data
