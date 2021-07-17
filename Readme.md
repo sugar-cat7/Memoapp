@@ -63,6 +63,7 @@ if (firebase.apps.length === 0) {
 ```
 
 ### Authentication から email とパスワードから認証を有効にする
+
 <img width="1089" alt="スクリーンショット 2021-07-17 13 03 33" src="https://user-images.githubusercontent.com/69241625/126025983-0c8cde95-5697-4d76-9019-983a6bb9da9c.png">
 - Sign UP と Login 部分を実装
   firebase の auth メソッドから createUserWithEmailAndPassword と signInWithEmailAndPassword を使う
@@ -82,4 +83,40 @@ const handlePress = () => {
     })
     .catch((err) => Alert.alert(err.message));
 };
+```
+
+- Login 状態の監視
+  マウント時に user 情報があるかどうか
+
+```js
+useEffect(() => {
+  const unsubscribe = firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+      navigation.reset({
+        index: 0,
+        routes: [{ name: 'MemoList' }],
+      });
+    }
+  });
+  return unsubscribe;
+}, []);
+```
+
+### useEffect について
+
+```js
+useEffect(callback); //propsが変更されたり、画面がアップデートされるたびにcallbackが実行される
+useEffect(callback, []); //コンポーネントがマウントされたときに一度だけcallbackが実行される
+useEffect(callback, [foo]); //fooが更新されたらcallbackが実行される
+```
+
+- return して cleanup する(コンポーネントがアンマウントされる直前に cleanup が実行される)
+
+```js
+useEffect(() => {
+  console.log('test'); //マウント時に実行
+  return () => {
+    console.log('Unmount!'); //アンマウント時に実行(直前)
+  };
+}, []);
 ```
