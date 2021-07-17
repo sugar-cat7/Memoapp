@@ -27,3 +27,59 @@
 ## core components
 
 https://reactnative.dev/docs/components-and-apis
+
+### firebase プロジェクト作成
+
+</>で web app 作成(reactNative なので)
+よしなに設定 →firebase を利用するために自分のプロジェクトに firebase Config を追加する
+
+- env.js と適当に作ってそこに入れる
+
+```js
+const firebaseConfig = {
+  apiKey: '…',
+  authDomain: '…',
+  projectId: '…',
+  storageBucket: '…',
+  messagingSenderId: '…',
+  appId: '…',
+};
+```
+
+Firebase プロジェクトの作成
+
+```
+$ npm install firebase
+```
+
+- App.jsx に追加
+
+```js
+import firebase from 'firebase';
+import firebaseConfig from 'env';
+if (firebase.apps.length === 0) {
+  firebase.initializeApp(firebaseConfig);
+}
+```
+
+### Authentication から email とパスワードから認証を有効にする
+
+- Sign UP と Login 部分を実装
+  firebase の auth メソッドから createUserWithEmailAndPassword と signInWithEmailAndPassword を使う
+
+```js
+const handlePress = () => {
+  firebase
+    .auth()
+    .createUserWithEmailAndPassword(email, password)
+    .then((userCredential) => {
+      const { user } = userCredential;
+      console.log(user.uid);
+      navigation.reset({
+        index: 0,
+        routes: [{ name: 'MemoList' }],
+      });
+    })
+    .catch((err) => Alert.alert(err.message));
+};
+```
