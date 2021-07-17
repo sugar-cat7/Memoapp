@@ -63,7 +63,7 @@ if (firebase.apps.length === 0) {
 ```
 
 ### Authentication から email とパスワードから認証を有効にする
-
+<img width="1089" alt="スクリーンショット 2021-07-17 13 03 33" src="https://user-images.githubusercontent.com/69241625/126025983-0c8cde95-5697-4d76-9019-983a6bb9da9c.png">
 - Sign UP と Login 部分を実装
   firebase の auth メソッドから createUserWithEmailAndPassword と signInWithEmailAndPassword を使う
 
