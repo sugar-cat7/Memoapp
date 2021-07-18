@@ -168,7 +168,7 @@ useEffect(() => {
       console.log(doc.data());
     });
   });
-  return unsubscribe;
+  return unsubscribe; //監視を解除
 }, []);
 ```
 
@@ -191,4 +191,16 @@ Object {
   renderItem={renderitem} //viewの部分はまとめる
   keyExtractor={(item) => item.id} //デフォルトでketを探しにいくので明示的に指定する
 />
+```
+
+### snapshot について
+
+[document](https://firebase.google.com/docs/firestore/query-data/listen?hl=ja)
+
+```js
+db.collection('foo').onSnapshot(() => {}); //複数のドキュメントスナップショットを含む
+
+db.collection('foo') //単一のドキュメントデータを持っている
+  .doc('bar')
+  .onSnapshot(() => {});
 ```
