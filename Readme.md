@@ -124,4 +124,71 @@ useEffect(() => {
 ### firebase の Database に情報を保存する(Cloud fireStore)
 
 - [Cloud Firestore のデータモデル](https://firebase.google.com/docs/firestore/data-model?hl=ja)
-  collection > document > data
+
+`collection > document > data`
+`referenceを指定するとdbから引っ張ってこれる`
+
+- 使い方
+- App.jsx に加える
+
+```js
+require('firebase/firestore');
+```
+
+- page
+
+```js
+const handlePress = () => {
+  const { currentUser } = firebase.auth(); //loginしているユーザ
+  const db = firebase.firestore(); //firestore呼び出す
+  const ref = db.collection(`users/${currentUser.uid}/memos`); //userごとのmemoのref
+  ref //refに対して入力値をadd
+    .add({
+      bodyText,
+      updatedAt: new Date(),
+    })
+    .then((docRef) => {
+      console.log('created', docRef.id);
+    })
+    .catch((err) => {
+      console.log('Error!', err);
+    });
+};
+```
+
+- db からデータを取り出す
+
+```js
+useEffect(() => {
+  const db = firebase.firestore();
+  const { currentUser } = firebase.auth();
+  const ref = db.collection(`users/${currentUser.uid}/memos`);
+  const unsubscribe = ref.onSnapshot((snapshot) => {
+    snapshot.forEach((doc) => {
+      console.log(doc.data());
+    });
+  });
+  return unsubscribe;
+}, []);
+```
+
+```
+Object {
+  "bodyText": "あああ",
+  "updatedAt": Object {
+    "nanoseconds": 710000000,
+    "seconds": 1626571433,
+  },
+}
+```
+
+- レンダリングの高速化
+  画面に表示されている部分のみを表示する
+
+```jsx
+<FlatList
+  data={memos}
+  renderItem={renderitem} //viewの部分はまとめる
+  keyExtractor={(item) => item.id} //デフォルトでketを探しにいくので明示的に指定する
+/>
+```
