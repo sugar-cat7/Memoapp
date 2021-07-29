@@ -1,14 +1,14 @@
 {
   "expo": {
-    "name": "MemoApp",
-    "slug": "MemoApp",
-    "version": "1.0.0",
+    "name": "MemoApp2",
+    "slug": "MemoApp2",
+    "version": "1.0.2",
     "privacy": "unlisted",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
       "image": "./assets/splash.png",
-      "resizeMode": "contain",
+      "resizeMode": "cover",
       "backgroundColor": "#ffffff"
     },
     "updates": {
@@ -16,12 +16,17 @@
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": false,
+      "bundleIdentifier": "jp.sugar.memoapp",
+      "buildNumber": "1.0.2"
     },
     "android": {
+      "package": "jp.sugar.memoapp",
+      "versionCode": 3,
+      "permissions": [],
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
+        "foregroundImage": "./assets/icon_adaptive_foreground.png",
+        "backgroundImage": "./assets/icon_adaptive_background.png"
       }
     },
     "web": {
