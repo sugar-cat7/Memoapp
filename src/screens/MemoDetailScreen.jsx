@@ -18,7 +18,7 @@ const MemoDetailScreen = (props) => {
       unsubscribe = ref.onSnapshot((doc) => {
         const data = doc.data();
         setMemo({
-          id: data.id,
+          id: doc.id,
           bodyText: data.bodyText,
           updatedAt: data.updatedAt.toDate(),
         });
