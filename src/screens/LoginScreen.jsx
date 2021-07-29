@@ -10,6 +10,7 @@ import {
 import firebase from 'firebase';
 import Button from '../components/Button';
 import Loading from '../components/Loading';
+import { translateErrors } from '../utils';
 
 const LoginScreen = (props) => {
   const { navigation } = props;
@@ -42,7 +43,10 @@ const LoginScreen = (props) => {
           routes: [{ name: 'MemoList' }],
         });
       })
-      .catch((err) => Alert.alert(err.message))
+      .catch((err) => {
+        const errorMsg = translateErrors(err.code);
+        Alert.alert(errorMsg);
+      })
       .then(() => {
         setLoading(false);
       });
