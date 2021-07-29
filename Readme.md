@@ -204,3 +204,44 @@ db.collection('foo') //単一のドキュメントデータを持っている
   .doc('bar')
   .onSnapshot(() => {});
 ```
+
+### Appstore GooglePlay store に出す
+
+- 画像が必要(splash, icon 等) -> assets に入れる
+- app.json 修正(画像の PATH, ios, android への bundleIdentifier 等の追加)
+
+### ビルドする(IOS)
+
+- simulator 上でビルド後の動作確認
+
+```sh
+$ expo whoami ->ログインしてたらOK
+$ expo build: ios
+
+? Choose the build type you would like: › - Use arrow-keys. Return to submit.
+   archive - Deploy the build to the store
+❯  simulator - Run the build on a simulator
+
+```
+
+-> URL 発行/login して確認(ビルドは結構時間かかりそう)
+
+-> 解答して simulator にドラックアンドドロップして動作確認
+
+- 公開する(archive を選ぶ)
+  よしなに設定
+
+->ビルド終わったらダウンロード .ipa(apple store に配信する用)
+Transporter を使ってビルドしたファイルを appstore にあげる
+
+### ビルドする(Android)
+
+```
+$ expo build:Android
+
+-> generate key storeする
+
+$ expo fetch:android:keystore
+->どこかに.jskファイルを移動させておく
+
+```
