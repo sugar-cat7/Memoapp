@@ -21,12 +21,8 @@ const MemoCreateScreen = (props) => {
         bodyText,
         updatedAt: new Date(),
       })
-      .then((docRef) => {
-        console.log('created', docRef.id);
-      })
-      .catch((err) => {
-        console.log('Error!', err);
-      });
+      .then(() => {})
+      .catch(() => {});
     navigation.goBack();
   };
   return (

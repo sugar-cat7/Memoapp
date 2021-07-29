@@ -1,6 +1,6 @@
 import { bool } from 'prop-types';
 import React from 'react';
-import { StyleSheet, Text, View, ActivityIndicator } from 'react-native';
+import { StyleSheet, View, ActivityIndicator } from 'react-native';
 
 const Loading = (props) => {
   const { isLoading } = props;
